@@ -10,7 +10,15 @@ const paginationSlice = createSlice({
     initialState: paginationInitialState,
     reducers: {
         changeCurrentPage(state, action) {
-            state.currentPage = action.payload
+            const currentPage = Number(action.payload)
+            
+            if(action.payload === '<') {
+                state.currentPage = state.currentPage - 1
+            } else if(action.payload === '>') {
+                state.currentPage = state.currentPage + 1
+            } else {
+                state.currentPage = currentPage
+            }
         }
     }
 });
